@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);
+}
+.container{
+    height: 400px;
+    width: 500px;
+    border-radius: 10px;
+    padding: 30px;
+     display: flex;
+     align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+h1{
+    font-size: 20px;
+}
+
+.container ul li{
+    height: 35px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+button{
+    height: 40px;
+    width: 200px;
+    background-color: rgb(135, 17, 135);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    margin: auto;
+    margin-bottom: 2px;
+}
+button:hover{
+    transform: scale(0.98);
+}
+.question {
+    height: 70px;
+    width: 100%;
+}
+.wrong{
+    background-color: rgb(238, 127, 127);
+}
+.correct{
+    background-color:rgb(186, 98, 186);
+}
+.box{
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
