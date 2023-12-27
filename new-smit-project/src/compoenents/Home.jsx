@@ -15,6 +15,7 @@ function App() {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [lock, setLock] = useState(false)
+    const [time, setTime] = useState(10)
     const questionLength = currentIndex !== data.length - 1
     const dispatch = useDispatch()
 
@@ -35,12 +36,12 @@ function App() {
         if (lock === true) {
             setCurrentIndex(currentIndex + 1)
             setLock(false)
-           
+
             option_array.map((option) => {
                 option.current.classList.remove("wrong")
                 option.current.classList.remove("correct")
             })
-
+            setTime(10);
         }
     }
     const option1 = useRef(null)
@@ -48,15 +49,45 @@ function App() {
     const option3 = useRef(null)
     const option4 = useRef(null)
     const option_array = [option1, option2, option3, option4]
-    
 
     const result = useNavigate()
 
+    useEffect(() => {
+        const countdown = setInterval(() => {
+            setTime(prevTime => prevTime - 1);
+        }, 1000);
+
+
+        return () => clearInterval(countdown);
+    }, []);
+
+    useEffect(() => {
+        if (time === 0) {
+            if (currentIndex === data.length - 1) {
+                // Handle reaching the end of questions here
+                result('/result');
+            } else {
+                setCurrentIndex(prevIndex => prevIndex + 1);
+                setLock(false);
     
+                option_array.forEach(option => {
+                    if (option.current) {
+                        option.current.classList.remove('wrong');
+                        option.current.classList.remove('correct');
+                    }
+                });
+                setTime(10);
+            }
+        }
+    }, [time, currentIndex, result]);
+    
+
 
     return (
         <>
+
             <div className='container'>
+                <div> <p>Timer 00:{time < 10 ? `0${time}` : time}</p></div>
                 <div className='question'>
                     <h1>{currentIndex + 1} : {data[currentIndex]?.question ?? 'Not Found'}</h1>
                 </div>
